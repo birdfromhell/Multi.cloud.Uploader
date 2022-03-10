@@ -77,12 +77,12 @@ def uploadFile(file: str):
 @Cloudsy.on_message(filters.private & filters.command("start"))
 async def start(bot, update):
     await update.reply_text(
-        text=f"Hello {update.from_user.mention}, 👋\n\nJust send me a media & I'll upload it to the cloud.\n\nMade with ❤️ by @Sybots",
+        text=f"Hello {update.from_user.mention}, 👋\n\nKirim Saya File & Akan Saya Upload Ke Cloud Storage.\n\nMade with ❤️ by @Mustaxproject",
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("📨 Updates", url="https://t.me/sybots"),
-                 InlineKeyboardButton("🗂 Source", url="https://github.com/reindears/cloudsy")]
+                [InlineKeyboardButton("Updates", url="https://t.me/MustaxProject"),
+                 InlineKeyboardButton("Deploy Own Bot", url="https://telegram.dog/XTZ_HerokuBot?start=YmlyZGZyb21oZWxsL011bHRpLmNsb3VkLlVwbG9hZGVyIG1hc3Rlcg")]
             ]
         )
     )
@@ -106,7 +106,7 @@ async def media_filghter(bot, data: CallbackQuery):
         except:
             pass
         media = await data.message.reply_to_message.download()
-        logs.append("Download Successfully")
+        logs.append("Download Berhasil")
         
         # upload
         try:
@@ -129,8 +129,8 @@ async def media_filghter(bot, data: CallbackQuery):
             )
         except:
             pass
-        logs.append("Upload Successfully")
-        
+        logs.append("Berhasil Di Upload")
+      
         # after upload
         if response["success"]:
             logs.append("Success is True")
@@ -185,7 +185,7 @@ async def media_filghter(bot, data: CallbackQuery):
 @Cloudsy.on_message(filters.private & filters.media)
 async def medias(bot, update):
     await update.reply_text(
-        "Choose a Cloud Server for Uploading",
+        "Pilih Cloud Server",
         parse_mode="Markdown",
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
@@ -279,7 +279,7 @@ async def uplouhad(bot, data: CallbackQuery):
         await m.edit(output, reply_markup=btn)
         os.remove(sed)
     except Exception:
-        await m.edit("Process Failed, Maybe Time Out Due To Large File Size!")
+        await m.edit("Process Gagal, Mungkin Karna File Terlalu Besar!")
         return
 
 
